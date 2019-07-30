@@ -47,8 +47,6 @@ dickory.ht()
 dock.ht()
 
 # Other Variables
-hour_line_points = []
-minute_line_points = []
 hour_hand_angle = 0
 minute_hand_angle = 0
 second_hand_angle = 0
@@ -74,7 +72,6 @@ hickory.circle(RADIUS)
 # Drawing hour lines and hour numbers
 for i in range(12):
     cur_angle = hickory.towards(0, 0)
-    hour_line_points.append(hickory.pos())
     hickory.pendown()
     hickory.seth(cur_angle)
     hickory.fd(HOUR_LINE)
@@ -113,7 +110,6 @@ hickory.fd(RADIUS)
 for i in range(60):
     cur_angle = hickory.towards(0, 0)
     hickory.pendown()
-    minute_line_points.append(hickory.pos())
     hickory.seth(cur_angle)
 
     hickory.fd(MINUTE_LINE)
@@ -130,7 +126,7 @@ system_responses = ['sys', 'system', 'computer', 'cpu', 's', 'system time']
 input_responses = ['give', 'input', 'me', 'type', 'in', 'i', 'input time']
 
 while True:
-    type_of_time = input("Would you like to use System time or Input time?: ")
+    type_of_time = input("Would you like to use System time or Input time?: ").lower()
     if type_of_time in system_responses:
         type_of_time = 'system'
         break
@@ -180,10 +176,6 @@ elif type_of_time == 'system':
 hickory.pensize(HOUR_HAND_LENGTH['width'])
 dickory.pensize(MINUTE_HAND_LENGTH['width'])
 dock.pensize(SECOND_HAND_LENGTH['width'])
-
-hickory.color('black')
-dickory.color('black')
-dock.color('black')
 
 hickory.down()
 dickory.down()

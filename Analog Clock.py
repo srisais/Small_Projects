@@ -126,7 +126,8 @@ system_responses = ['sys', 'system', 'computer', 'cpu', 's', 'system time']
 input_responses = ['give', 'input', 'me', 'type', 'in', 'i', 'input time']
 
 while True:
-    type_of_time = input("Would you like to use System time or Input time?: ").lower()
+    type_of_time = input(("Would you like to use System time or Input time?: ")
+                         .lower())
     if type_of_time in system_responses:
         type_of_time = 'system'
         break
@@ -136,7 +137,6 @@ while True:
     else:
         print("Please choose from the options provided.")
         continue
-
 
 if type_of_time == 'input':
     while True:

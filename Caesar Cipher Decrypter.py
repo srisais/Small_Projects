@@ -8,14 +8,37 @@ alphabet = []
 for i in range(len(alpha)):
     alphabet.append(alpha[i])
 
+encrypt_options = ["EN", "ENCRYPT", "SECURE"]
+decrypt_options = ["DE", "DECRYPT", "OPEN"]
+
 while True:
-    mapping = input("What letter becomes what? (Input Format: 'A N' for A becomes N) ").upper()
+    de_or_en = input("Would you like to decrypt or encrypt your text? ").upper()
+    if de_or_en in encrypt_options:
+        de_or_en = "encrypt"
+        break
+    elif de_or_en in decrypt_options:
+        de_or_en = "decrypt"
+        break
+    else:
+        print("Please answer the question properly")
+
+print()
+
+while True:
+    mapping = input("What letter becomes what? (Input Format: 'A N' for decrypted: A = encrypted: N) ").upper()
     try:
         mapping = mapping.split()
-        mapping.reverse()
         break
     except:
         print("Please provide the clue properly")
+
+if de_or_en == "decrypt":
+    mapping.reverse()
+    de_or_en_opposite = "encrypt"
+elif de_or_en == "encrypt":
+    de_or_en_opposite = "decrypt"
+else:
+    print("Something went horribly wrong. This is not good. *hyperventilates* ")
 
 print()
 
@@ -41,18 +64,18 @@ unscrambled_lines = []
 scrambled_lines = []
 
 while True:
-    num_input_lines = input("How many lines would you like to decrypt? ")
+    num_input_lines = input("How many line(s) would you like to " + de_or_en + "? ")
     # num_input_lines = "1"
     try:
         num_input_lines = int(num_input_lines)
         break
     except:
-        print("Please input the number properly")
+        print("Please input the number of line(s) properly")
 
 print()
 
 for i in range(num_input_lines):
-    scrambled = input("Please input the scrambled sequence: ").upper()
+    scrambled = input("Please input the " + de_or_en_opposite + "ed sequence: ").upper()
     scrambled_lines.append(scrambled)
 
 for decrypt in scrambled_lines:
@@ -74,7 +97,7 @@ for decrypt in scrambled_lines:
     unscrambled_lines.append(unscramble)
 
 print()
-print("Here are the unscrambled line(s): ")
+print("Here are the " + de_or_en + "ed line(s): ")
 print()
 
 for line in unscrambled_lines:
